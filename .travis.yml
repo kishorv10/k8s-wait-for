@@ -16,6 +16,7 @@ env:
     - KUBECONFIG=$HOME/.kube/config
 
 before_script:
+- eval $(minikube docker-env)
 # Download kubectl, which is a requirement for using minikube.
 - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
 # Download minikube.
@@ -26,7 +27,6 @@ before_script:
 - "sudo chown -R travis: /home/travis/.minikube/"
 
 script:
-- eval $(minikube docker-env)
 - make container
 # Following is just to demo that the kubernetes cluster works.
 - kubectl cluster-info
