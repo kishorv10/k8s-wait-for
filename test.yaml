@@ -12,7 +12,6 @@ spec:
     command: ['sh', '-c', 'echo The app is running! && sleep 60']
   initContainers:
   - name: init-container-under-test
-    restartPolicy: never
     image: dcasavant/k8s-wait-for:test
     env:
     - name: job
@@ -31,5 +30,4 @@ spec:
       - name: pi
         image: perl
         command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
-      restartPolicy: Never
   backoffLimit: 4
