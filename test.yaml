@@ -12,8 +12,10 @@ spec:
     command: ['sh', '-c', 'echo The app is running! && sleep 60']
   initContainers:
   - name: init-mydb
-    image: busybox
-    command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
+    image: dcasavant/k8s-wait-for:test
+    env:
+    - name: job
+      value: "pi"
 ---
 apiVersion: batch/v1
 kind: Job
