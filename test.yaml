@@ -11,7 +11,8 @@ spec:
     image: busybox
     command: ['sh', '-c', 'echo The app is running! && sleep 60']
   initContainers:
-  - name: init-mydb
+  - name: init-container-under-test
+    restartPolicy: never
     image: dcasavant/k8s-wait-for:test
     env:
     - name: job
@@ -21,6 +22,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: pi
+  labels:
+    app: travis-example
 spec:
   template:
     spec:
