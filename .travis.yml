@@ -1,47 +1,56 @@
 sudo: required
 services:
 - docker
+
+
+
+# We need the systemd for the kubeadm and it's default from 16.04+
 dist: xenial
 env:
   global:
-  - CHANGE_MINIKUBE_NONE_USER=true
-  - MINIKUBE_WANTUPDATENOTIFICATION=false
-  - MINIKUBE_WANTREPORTERRORPROMPT=false
-  - MINIKUBE_HOME=$HOME
-  - CHANGE_MINIKUBE_NONE_USER=true
-  - KUBECONFIG=$HOME/.kube/config
-  - secure: oI50Cv2S+Gz458ib7+EMcOfxEFAn7uyHk23w4mbuCNvzhKRJcFcthAMrgo8JgVShMMuGjhCT6dEEkJMeC1fNwvKLXwv3RoTVFP0Xg5dthr2v6HenGwSNoevzYJT79Ox1/oYuY+IiQV0pSpnKno2LwPNJ0FhdGokeDgOUcgJKXcfAiHEjOcPhn6bWnz0l2+ywR/PfV/LYiQEvsNqIiySnBk0SqVI0JB3ivZU4e13+XFSxf/BSCoX/s2Nkc+2HqWR1N2HXnOUQIP4T7zIvCau6BjHBJC9qCnuaiNJY0RqohBV2F/+j3IPmd4AohpvJCu27FRdrgoTHdpZA8G7Bq44HBuCK7iBQdbw1hYxGbZ1RvGxTo47vyEl8uYZQB4ppxCWfehRzNUACJQZqpbspbuRd1H93PdeI3G9bXsyWaX6D8ew4rYyVWsvLp60gh8dYfKE7r0WBnvmUoPpH4hgUtd3xMsPf8iDqD2uJXmVNWjn60AYzaIuuCLELJed0vGWQol5p9/K6iSG1Mmj3/pVYhLeIG+e90zir4Ogw54e8N/Pqzas0dRO7+zJbeqxuzoqMGUEEK8bvdjaRBci6fT4lwGy9q7J1GInZyLRrmmeRf8V6Cn6T0d84qcM+hCDo0o2Qkk/RH1b4rZM2BP9Oyj+8hnN7SGyP4V+1m3SOfPusLCKwbIo=
-  - secure: jy0S4A4NSbP3NVU8IgCJ+OZ1dWwbsvDAIa0M9iW5z8z2gnWPmmc6xmDHqu4akNra3pownDXJcwbKcva1ZVE77T/9wr4BOKBLKIwh20qWezqHHl/Yz9tG4nb/I60L8n/w68ndicGloxfye0DhXegczqIfLpOONsrgYqkf7wNOLMpfoGO83cMTSO07NCWJx1y60mpmvKFLqNVGr/K4SRKD95yvIe/YsBzc/4Vqm4fHBPLrnIxBUnU+RUpNfAHGQdHBV8QZ+eDSHkqzfbP37r445EPRAAG+iM2/UuLb76zx1lSLFhbs5DtbJypeNJ7QAjiXkD6tnxmveduwsn5uVznRj4/9gGZ89UBquDYuWHRAOPsFJMizRJI9amsKuQpygyQaWhYy2euTM7cUehG/rn7wu4RWP2B49IxWuB28/zoKMTb8vyTt8aDycliBczllGwcYD2nT9KXivkv+NZ9XSyu6HesPmjG045dU/3FHTEWpPEKyJlmVc00dH8MZs+pGwOFmZD6309nhSZkbhIOZfVRjZNWJu7+vEG1bZVfbgL+tIYUxIx15rRAcKdwfq6KhaHJlajY1SnnbtsAfRkpNotYvuG4LUeGbDiJO42D6DxK4/C5cEV5qzcBkPMUvVDL5/v+02DZol6TAJ14O0uBATqNjSBu63YIzRTQdJKnbbYv48XA=
+    - CHANGE_MINIKUBE_NONE_USER=true
+    - MINIKUBE_WANTUPDATENOTIFICATION=false
+    - MINIKUBE_WANTREPORTERRORPROMPT=false
+    - MINIKUBE_HOME=$HOME
+    - CHANGE_MINIKUBE_NONE_USER=true
+    - KUBECONFIG=$HOME/.kube/config
+    - secure: "xqk1MCe9ZLXXocQplRqds97g0pnHB63EGScjl6Uaboi4TRdWXo9GxPUlh+8q06cUp7mnPq1XDOoJ0aVqwP8AZIfpIO+aNC4ArOBye4rK/eAEf2fuaMesJEaSfKZ9Oaek6k0V2v+zcF/aiDDCNkjHLfD99cYt/zZB/xDTySUrc9TO0W8x5JYiBAB6LvDk4G1wXY3j9Furt2PAaPQvh9qrOCIKGzSwuY144alkTRY+i1X2YHn+oEps3eUoXnAzy0rYlhUe7Z2YumMpBap1z5NnS4G1kjGhAsACOeXxqzcHGOsReQS/GHF5mk9c+Ah7Ole21Zz9qJ6ApXJbm8tGVb1AFKcIH1BK16gnIqGnu+lCskUZwjZnYMKV8Xe/3/IDOti9odp6/wIeo8HEbsX+SvxtiiFp9LCBVYdJm+xYggDb9eWQkdYETRk7zoSNPu3Gixi4hRxrBVmHLNT216NACd3pbPDS63dGWTRp8QgUQQ9/37FYBWJBbR9NUP2gIs8RC5FHZjKBcdFRvsH5bFnP2y5B/POzoZQP5s3FGo9ezQSsd2PN/zVxHjQV+kXmesUfbstEHQ1ghoarb+HFVajI+S5zWprdZvs1ujwPCrVdFE/rJ7Xa6P8syRfCea8c44KvYFzARe2rOpaReSeywWBYNLcHYGesSB4h+EKMO97TAe086l0="
+    - secure: "jqVmnYYAZrajGhWXS5GQe5CkWduv/9SIAlJIHQnRvRryDCtKMnJxWmqpFGMRKODUfMILsXl9tBHUYv7HH3pfUy35YjvNoya09rUdRFvZvYFsHQy1orN2TZER3rATI1j1FdNyLNA8lZNYc3F/fjYZmjeTey1cMKc3hu/MZoVq0MouP7NZPiFbOhhx6ialqYTwihaFHY5a6ipFz+mVTMCovBoUOztpII+YkmnKCiWKGAyFB2XE3mGqgXlUN0eDsx0TCl8qqfQnihBGLpAwqnLMLnqMp+TJ4PX5evc7hKa1p3t8SPhC77vQPJEjzNXF3CuLaMCR6TlL1Zsd2lpz8c+gV3Bou3PTmADjCzTxpi9K+wsf9WZDSys0tDGB6F5Ttxsz10CvdMGqNHfcAM/H3jQvPKUtcYBJg06z6wkFMrYBnDScxCq90MxGCQALPCLcPKCQuubhgR2TNMKbNArDh/zuZ5NwzxWxObO1Q/6eVYeJIeM3WzmIAlHtwg9NtSmkyZdqpFIY3BG9tQFnbOFrY3f3TY38245vh4Aj5ao+jvWLdf62CNr+NB5tdoDo8cGq2Gi2JEv2wZQrK8B84q5cQj15jh+n4QWkdFAMkklJNvD8gtFxFRpMY4X+IOn75PF2C8a5M4xL098XbHfu3mdO8yTiXs00PzkfTbzOpKNjoTmwoAY="
+
 before_script:
-- curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kubectl
-  && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-- curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.35.0/minikube-linux-amd64
-  && chmod +x minikube && sudo mv minikube /usr/local/bin/
+#- eval $(minikube docker-env)
+# Download kubectl, which is a requirement for using minikube.
+- curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+# Download minikube.
+- curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.35.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 - mkdir -p $HOME/.kube $HOME/.minikube
 - touch $KUBECONFIG
 - sudo minikube start --vm-driver=none --kubernetes-version=v1.13.0
-- 'sudo chown -R travis: /home/travis/.minikube/'
+- "sudo chown -R travis: /home/travis/.minikube/"
+# Following is just to demo that the kubernetes cluster works.
 - kubectl cluster-info
-- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}';
-  until kubectl -n kube-system get pods -lcomponent=kube-addon-manager -o jsonpath="$JSONPATH"
-  2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-addon-manager to
-  be available"; kubectl get pods --all-namespaces; done
-- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}';
-  until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath="$JSONPATH"
-  2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available";
-  kubectl get pods --all-namespaces; done
+# Verify kube-addon-manager.
+# kube-addon-manager is responsible for managing other kubernetes components, such as kube-dns, dashboard, storage-provisioner..
+- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lcomponent=kube-addon-manager -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-addon-manager to be available"; kubectl get pods --all-namespaces; done
+# Wait for kube-dns to be ready.
+- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available"; kubectl get pods --all-namespaces; done
+
 script:
+# Create example Redis deployment on Kubernetes.
 - make test
+# Apply the testing yaml //TODO: Refactor into a test suite
 - kubectl apply -f test.yaml
-- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}';
-  until kubectl -n default get pods -lapp=travis-example -o jsonpath="$JSONPATH" 2>&1
-  | grep -q "Ready=True"; do sleep 1;echo "waiting for travis-example deployment to
-  be available"; kubectl get pods -n default; done
+#- kubectl run travis-example --image=redis --labels="app=travis-example"
+# Make sure created pod is scheduled and running.
+- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n default get pods -lapp=travis-example -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for travis-example deployment to be available"; kubectl get pods -n default; done
+
 before_deploy:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
 deploy:
-- provider: script
-  script: make push
-  on:
-    branch: master
-    tags: true
+  # push taged container to docker hub
+  - provider: script
+    script: make push
+    on:
+      branch: master
+      tags: true
