@@ -1,4 +1,14 @@
 ---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: default
+  name: system:serviceaccount:default:default-role
+rules:
+- apiGroups: ["", "extensions", "apps", "batch"]
+  resources: ["*"]
+  verbs: ["*"]
+---
 apiVersion: v1
 kind: Pod
 metadata:
