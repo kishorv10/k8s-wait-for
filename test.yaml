@@ -7,7 +7,7 @@ metadata:
   labels:
     app: tools-rbac
 rules:
-- apiGroups: [""]
+- apiGroups: ["", "batch"]
   resources: ["*"]
   verbs: ["*"]
 ---
@@ -20,7 +20,7 @@ metadata:
     app: tools-rbac
 subjects:
 - kind: Group
-  name: system:serviceaccounts
+  name: system:serviceaccount:default:default
   apiGroup: rbac.authorization.k8s.io
   namespace: default
 roleRef:
