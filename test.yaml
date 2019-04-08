@@ -1,13 +1,32 @@
 ---
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
+  name: api-role
   namespace: default
-  name: system:serviceaccount:default:default-role
+  labels:
+    app: tools-rbac
 rules:
-- apiGroups: ["", "extensions", "apps", "batch"]
+- apiGroups: [""]
   resources: ["*"]
   verbs: ["*"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: global-rolebinding
+  namespace: default
+  labels:
+    app: tools-rbac
+subjects:
+- kind: Group
+  name: system:serviceaccounts
+  apiGroup: rbac.authorization.k8s.io
+  namespace: default
+roleRef:
+  kind: Role
+  name: api-role
+  apiGroup: ""
 ---
 apiVersion: v1
 kind: Pod
