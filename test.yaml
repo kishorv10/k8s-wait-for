@@ -13,9 +13,7 @@ spec:
   initContainers:
   - name: init-container-under-test
     image: dcasavant/k8s-wait-for:test
-    env:
-    - name: job
-      value: "pi"
+    args: ["job",  "pi"]
 ---
 apiVersion: batch/v1
 kind: Job
