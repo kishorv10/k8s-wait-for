@@ -18,7 +18,7 @@ env:
     - secure: "jqVmnYYAZrajGhWXS5GQe5CkWduv/9SIAlJIHQnRvRryDCtKMnJxWmqpFGMRKODUfMILsXl9tBHUYv7HH3pfUy35YjvNoya09rUdRFvZvYFsHQy1orN2TZER3rATI1j1FdNyLNA8lZNYc3F/fjYZmjeTey1cMKc3hu/MZoVq0MouP7NZPiFbOhhx6ialqYTwihaFHY5a6ipFz+mVTMCovBoUOztpII+YkmnKCiWKGAyFB2XE3mGqgXlUN0eDsx0TCl8qqfQnihBGLpAwqnLMLnqMp+TJ4PX5evc7hKa1p3t8SPhC77vQPJEjzNXF3CuLaMCR6TlL1Zsd2lpz8c+gV3Bou3PTmADjCzTxpi9K+wsf9WZDSys0tDGB6F5Ttxsz10CvdMGqNHfcAM/H3jQvPKUtcYBJg06z6wkFMrYBnDScxCq90MxGCQALPCLcPKCQuubhgR2TNMKbNArDh/zuZ5NwzxWxObO1Q/6eVYeJIeM3WzmIAlHtwg9NtSmkyZdqpFIY3BG9tQFnbOFrY3f3TY38245vh4Aj5ao+jvWLdf62CNr+NB5tdoDo8cGq2Gi2JEv2wZQrK8B84q5cQj15jh+n4QWkdFAMkklJNvD8gtFxFRpMY4X+IOn75PF2C8a5M4xL098XbHfu3mdO8yTiXs00PzkfTbzOpKNjoTmwoAY="
 
 before_script:
-- docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 #- eval $(minikube docker-env)
 # Download kubectl, which is a requirement for using minikube.
 - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
