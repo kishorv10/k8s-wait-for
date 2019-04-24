@@ -21,7 +21,7 @@ test_wait_for_job_success() {
       sleep 1
     fi
   done
-  assert [ "$attempt_count" -gt "1" ] "The wait_for job should have waited at least one iteration"
+  assert "test $attempt_count -gt 1" "The wait_for job should have waited at least one iteration"
 }
 
 teardown() {
