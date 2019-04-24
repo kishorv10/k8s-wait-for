@@ -4,7 +4,7 @@ test_wait_for_job_success() {
   echo "Deploying wait_for_job_success.yaml"
   kubectl apply -f wait_for_job_success.yaml
 
-  local TIMEOUT=10
+  local TIMEOUT=15
   local cmd=""
   local attempt_count=1
 
