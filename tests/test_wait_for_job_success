@@ -1,17 +1,23 @@
 test_should_print_bonjour_monde() {
   JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}';
 
+  echo "Deploying wait_for_job_success.yaml"
   kubectl apply -f wait_for_job_success.yaml
 
   local TIMEOUT=5
-  local cmd="kubectl -n default get pods -lapp=travis-example -o jsonpath="$JSONPATH" 2>&1 | grep -q \"Ready=True\""
+  local cmd=""
+  local attempt_count=1
 
-  until [ $TIMEOUT -eq 4 ] || cmd;
+  until kubectl -n default get pods -lapp=travis-example -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"
   do
-    sleep 1
-    echo "waiting for travis-example deployment to be available"
-    kubectl get pods -n default
+    if ( attempt_count == TIMEOUT )
+    then
+      fail "Timeout while waiting for a successful deployment"
+      kubectl get pods -n default
+      return 1
+    else
+      echo "Waiting..."
+      attempt_count++
+      sleep 1
   done
-
-  assert_equals "A" "A"
 }
