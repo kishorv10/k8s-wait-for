@@ -3,7 +3,10 @@ test_should_print_bonjour_monde() {
 
   kubectl apply -f wait_for_job_success.yaml
 
-  until kubectl -n default get pods -lapp=travis-example -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True";
+  local TIMEOUT=5
+  local cmd="kubectl -n default get pods -lapp=travis-example -o jsonpath="$JSONPATH" 2>&1 | grep -q \"Ready=True\""
+
+  until [ $TIMEOUT -eq 4 ] || cmd;
   do
     sleep 1
     echo "waiting for travis-example deployment to be available"
