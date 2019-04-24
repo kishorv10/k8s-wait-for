@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
       - name: pi
-        image: perl
-        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+        image: alpine
+        command: ['sh', '-c', 'sleep 10']
       restartPolicy: Never
   backoffLimit: 4
