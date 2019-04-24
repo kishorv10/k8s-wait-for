@@ -40,7 +40,7 @@ before_script:
 script:
   # Create example Redis deployment on Kubernetes.
   - make test
-  - ./bash_unit tests/*
+  - ./bash_unit tests/test_*
 
 before_deploy:
   - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
