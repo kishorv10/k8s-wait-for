@@ -4,7 +4,7 @@ test_wait_for_job_success() {
   echo "Deploying wait_for_job_success.yaml"
   kubectl apply -f wait_for_job_success.yaml
 
-  local TIMEOUT=5
+  local TIMEOUT=10
   local cmd=""
   local attempt_count=1
 
@@ -21,10 +21,12 @@ test_wait_for_job_success() {
       sleep 1
     fi
   done
+  assert (( attempt_count > 1 )) "The wait_for job should have waited at least one iteration"
 }
 
 teardown() {
   kubectl get all
+  echo "Cleaning up run resources..."
   kubectl delete all -l cleanup=teardown
   kubectl get all
 }

@@ -39,6 +39,7 @@ before_script:
 
 script:
   - make test
+  - kubectl apply -f tests/kubernetes-role-access.yaml
   - ./bash_unit tests/test_*
 
 before_deploy:

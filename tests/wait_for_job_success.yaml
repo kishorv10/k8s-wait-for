@@ -1,35 +1,4 @@
 ---
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: api-role
-  namespace: default
-  labels:
-    app: tools-rbac
-    cleanup: teardown
-rules:
-- apiGroups: ["", "batch"]
-  resources: ["pods", "jobs"]
-  verbs: ["get", "watch", "list"]
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: global-rolebinding
-  namespace: default
-  labels:
-    app: tools-rbac
-    cleanup: teardown
-subjects:
-- kind: User
-  name: system:serviceaccount:default:default
-  apiGroup: rbac.authorization.k8s.io
-  namespace: default
-roleRef:
-  kind: Role
-  name: api-role
-  apiGroup: rbac.authorization.k8s.io
----
 apiVersion: v1
 kind: Pod
 metadata:
@@ -60,6 +29,6 @@ spec:
       containers:
       - name: pi
         image: alpine
-        command: ['sh', '-c', 'sleep 10']
+        command: ['sh', '-c', 'sleep 5']
       restartPolicy: Never
   backoffLimit: 4
