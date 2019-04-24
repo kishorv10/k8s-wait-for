@@ -1,4 +1,4 @@
-test_should_print_bonjour_monde() {
+test_wait_for_job_success() {
   JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}';
 
   echo "Deploying wait_for_job_success.yaml"
@@ -21,4 +21,10 @@ test_should_print_bonjour_monde() {
       sleep 1
     fi
   done
+}
+
+teardown() {
+  kubectl get all
+  kubectl delete all -l cleanup=teardown
+  kubectl get all
 }
