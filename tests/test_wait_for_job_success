@@ -19,5 +19,6 @@ test_should_print_bonjour_monde() {
       echo "Waiting..."
       attempt_count++
       sleep 1
+    fi
   done
 }
