@@ -21,3 +21,4 @@ clean:
 
 test: image
 	docker tag $(PREFIX)/$(REPO_NAME) $(PREFIX)/$(REPO_NAME):test  # Add a tag for the current image to be tested
+	
