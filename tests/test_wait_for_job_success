@@ -10,14 +10,14 @@ test_should_print_bonjour_monde() {
 
   until kubectl -n default get pods -lapp=travis-example -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"
   do
-    if ( attempt_count == TIMEOUT )
+    if (( attempt_count == TIMEOUT ))
     then
       fail "Timeout while waiting for a successful deployment"
       kubectl get pods -n default
       return 1
     else
       echo "Waiting..."
-      attempt_count++
+      ((attempt_count++))
       sleep 1
     fi
   done
